@@ -51,7 +51,7 @@ src/main/java/com/mvault/
 
 - Java 25
 - PostgreSQL (com banco `mvault` criado)
-- Variável de ambiente `JWT_SECRET_SECURITY` configurada (ou utilize o fallback padrão em `application.properties`)
+- Variáveis de ambiente `JWT_SECRET_SECURITY` e `DB_PASSWORD` configuradas. Não há segredo padrão para JWT.
 
 ### Execução
 
@@ -83,3 +83,10 @@ A documentação completa da API está disponível em `http://localhost:8080/swa
 ## Contexto de Desenvolvimento
 
 Todo o código Java (entidades, serviços, controllers, segurança, validações e configurações) foi desenvolvido e debugado manualmente no IntelliJ IDEA. O frontend está em um repositório separado: [mvault-frontend](https://github.com/SEU_USUARIO/mvault-frontend)
+
+## Testes
+
+No Windows, execute `mvnw.cmd test`; em Linux/macOS, `./mvnw test`.
+Os testes de contexto usam H2 em memória por configuração explícita e não acessam o PostgreSQL da aplicação. A suíte cobre autenticação, limites de entrada, expiração JWT e concorrência do estoque.
+
+No IntelliJ, configure DB_PASSWORD e JWT_SECRET_SECURITY nas variáveis de ambiente da execução. Mantenha os valores na configuração local ignorada pelo Git; não os inclua no README, em arquivos compartilhados ou em commits.

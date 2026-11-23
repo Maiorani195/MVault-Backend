@@ -12,6 +12,6 @@ public record CategoriaRequest(
         String nome ,
 
 
-        @Size(max = 500, message = "A descrição pode ter até no máximo 500 caracteres.")
+        @Size(max = 255, message = "A descrição pode ter até no máximo 255 caracteres.")
         String descricao) {
 }

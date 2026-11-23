@@ -51,7 +51,7 @@ public class MovimentacaoService {
     @Transactional
     @Operation(summary = "Registo de Movimentação com impacto no Estoque")
     public MovimentacaoResponse criar(MovimentacaoRequest request) {
-        Produto produto = produtosRepository.findById(request.produtoId())
+        Produto produto = produtosRepository.findByIdParaAtualizacao(request.produtoId())
                 .orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado com id: " + request.produtoId()));
 
         if (!produto.getAtivo()) {
