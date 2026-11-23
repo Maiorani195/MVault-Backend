@@ -72,7 +72,7 @@ public class ProdutoService {
 
     @Transactional
     public ProdutoResponse atualizar(Long id, ProdutoRequest request) {
-        Produto produto = buscarEntidadePorId(id);
+        Produto produto = buscarEntidadeParaAtualizacao(id);
 
         if (produtoRepository.existsByNomeIgnoreCaseAndIdNot(request.nome(), id)) {
             throw new BusinessException("Já existe um produto com o nome: " + request.nome());
@@ -95,7 +95,7 @@ public class ProdutoService {
 
     @Transactional
     public void deletar(Long id) {
-        Produto produto = buscarEntidadePorId(id);
+        Produto produto = buscarEntidadeParaAtualizacao(id);
         produto.setAtivo(false);
         produto.setAtualizadoEm(LocalDateTime.now());
         produtoRepository.save(produto);
@@ -104,6 +104,11 @@ public class ProdutoService {
 
     public Produto buscarEntidadePorId(Long id) {
         return produtoRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado com id: " + id));
+    }
+
+    private Produto buscarEntidadeParaAtualizacao(Long id) {
+        return produtoRepository.findByIdParaAtualizacao(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado com id: " + id));
     }
 

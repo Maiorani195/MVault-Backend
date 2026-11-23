@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 public record ProdutoRequest(
 
         @NotBlank(message = "Nome é obrigatório!")
-        @Size(max = 250 , message = "O nome deve ter no máximo 250 caracteres")
+        @Size(max = 150 , message = "O nome deve ter no máximo 150 caracteres")
         String nome,
 
 

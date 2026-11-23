@@ -17,7 +17,7 @@ public record MovimentacaoRequest(
         @NotNull(message = "ID do produto é obrigatório")
         Long produtoId,
 
-        @Size(max = 300 , message = " A observação pode ter no maximo 300 caracteres!")
+        @Size(max = 255 , message = "A observação pode ter no máximo 255 caracteres!")
         String observacao
 ) {
 }

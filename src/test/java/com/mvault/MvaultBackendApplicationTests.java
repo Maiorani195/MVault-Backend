@@ -1,9 +1,9 @@
 package com.mvault;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import com.mvault.support.IsolatedDatabaseTest;
 
-@SpringBootTest
+@IsolatedDatabaseTest
 class MvaultBackendApplicationTests {
 
 	@Test
